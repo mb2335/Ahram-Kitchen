@@ -19,7 +19,15 @@ const translations = {
     "order.items": "Items",
     "order.customer": "Customer",
     "button.edit": "Edit",
-    "button.delete": "Delete"
+    "button.delete": "Delete",
+    "cart.title": "Your Cart",
+    "cart.empty": "Your cart is empty",
+    "cart.checkout": "Checkout",
+    "cart.quantity": "Quantity",
+    "cart.add": "Add to Cart",
+    "cart.added": "Added to cart",
+    "cart.addedDescription": "has been added to your cart.",
+    "cart.view": "View Cart"
   },
   ko: {
     "menu.items": "메뉴 항목",
@@ -31,7 +39,15 @@ const translations = {
     "order.items": "주문 항목",
     "order.customer": "고객",
     "button.edit": "수정",
-    "button.delete": "삭제"
+    "button.delete": "삭제",
+    "cart.title": "장바구니",
+    "cart.empty": "장바구니가 비어 있습니다",
+    "cart.checkout": "결제하기",
+    "cart.quantity": "수량",
+    "cart.add": "장바구니에 담기",
+    "cart.added": "장바구니에 담김",
+    "cart.addedDescription": "이(가) 장바구니에 담겼습니다.",
+    "cart.view": "장바구니 보기"
   }
 };
 

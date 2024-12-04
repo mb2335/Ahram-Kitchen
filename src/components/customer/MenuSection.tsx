@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface MenuItem {
   id: number;
@@ -17,11 +18,32 @@ interface MenuSectionProps {
 
 export const MenuSection = ({ title, items }: MenuSectionProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleAddToCart = (item: MenuItem) => {
+    // Get existing cart items
+    const existingItems = localStorage.getItem('cartItems');
+    let cartItems = existingItems ? JSON.parse(existingItems) : [];
+    
+    // Check if item already exists
+    const existingItemIndex = cartItems.findIndex((i: MenuItem) => i.id === item.id);
+    
+    if (existingItemIndex >= 0) {
+      // Increment quantity if item exists
+      cartItems[existingItemIndex].quantity += 1;
+    } else {
+      // Add new item with quantity 1
+      cartItems.push({ ...item, quantity: 1 });
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+    console.log('Added to cart:', item.name);
+    
     toast({
-      title: "Added to cart",
-      description: `${item.name} has been added to your cart.`,
+      title: t("cart.added"),
+      description: `${item.name} ${t("cart.addedDescription")}`,
     });
   };
 
@@ -48,7 +70,7 @@ export const MenuSection = ({ title, items }: MenuSectionProps) => {
                 className="w-full"
                 onClick={() => handleAddToCart(item)}
               >
-                Add to Cart
+                {t("cart.add")}
               </Button>
             </div>
           </Card>
