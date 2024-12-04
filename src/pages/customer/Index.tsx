@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { MenuSection } from "@/components/customer/MenuSection";
 import { Cart } from "@/components/customer/Cart";
 import { OrderStatus } from "@/components/customer/OrderStatus";
-import { Mountain, Fan } from "lucide-react";
+import { Fan } from "lucide-react";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 const CustomerPortal = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -16,14 +17,17 @@ const CustomerPortal = () => {
             <Fan className="h-6 w-6 text-primary" />
             <h1 className="text-2xl font-bold text-gray-800">아람 키친</h1>
           </div>
-          <Button
-            variant="outline"
-            className="flex items-center gap-2 border-primary/20 hover:bg-primary/5"
-            onClick={() => setCartOpen(true)}
-          >
-            <span className="text-lg">🛒</span>
-            장바구니 보기
-          </Button>
+          <div className="flex items-center gap-4">
+            <LanguageToggle />
+            <Button
+              variant="outline"
+              className="flex items-center gap-2 border-primary/20 hover:bg-primary/5"
+              onClick={() => setCartOpen(true)}
+            >
+              <span className="text-lg">🛒</span>
+              장바구니 보기
+            </Button>
+          </div>
         </div>
       </header>
 
